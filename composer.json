@@ -1,11 +1,11 @@
 {
-    "name": "coderstephen/slack-client",
+    "name": "gbksoft/slack-client",
     "keywords": ["slack", "api", "realtime"],
     "license": "MIT",
     "description": "A better Slack client, with RTM API support",
     "authors": [{
-        "name": "Stephen Coakley",
-        "email": "me@stephencoakley.com"
+        "name": "Admin",
+        "email": "admin@gbksoft.com"
     }],
     "require": {
         "php": ">=5.5",
