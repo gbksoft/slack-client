@@ -113,7 +113,7 @@ class Channel extends ClientObject implements ChannelInterface
      */
     public function rename($name)
     {
-        return $this->client->apiCall('channels.rename', [
+        return $this->client->apiCall('conversations.rename', [
             'channel' => $this->getId(),
             'name' => $name,
         ])->then(function () use ($name) {
@@ -131,7 +131,7 @@ class Channel extends ClientObject implements ChannelInterface
      */
     public function setPurpose($text)
     {
-        return $this->client->apiCall('channels.setPurpose', [
+        return $this->client->apiCall('conversations.setPurpose', [
             'channel' => $this->getId(),
             'purpose' => $text,
         ])->then(function () use ($text) {
@@ -149,7 +149,7 @@ class Channel extends ClientObject implements ChannelInterface
      */
     public function setTopic($text)
     {
-        return $this->client->apiCall('channels.setTopic', [
+        return $this->client->apiCall('conversations.setTopic', [
             'channel' => $this->getId(),
             'topic' => $text,
         ])->then(function () use ($text) {
@@ -165,7 +165,7 @@ class Channel extends ClientObject implements ChannelInterface
      */
     public function archive()
     {
-        return $this->client->apiCall('channels.archive', [
+        return $this->client->apiCall('conversations.archive', [
             'channel' => $this->getId(),
         ])->then(function () {
             $this->data['is_archived'] = true;
@@ -179,7 +179,7 @@ class Channel extends ClientObject implements ChannelInterface
      */
     public function unarchive()
     {
-        return $this->client->apiCall('channels.unarchive', [
+        return $this->client->apiCall('conversations.unarchive', [
             'channel' => $this->getId(),
         ])->then(function () {
             $this->data['is_archived'] = false;
@@ -195,7 +195,7 @@ class Channel extends ClientObject implements ChannelInterface
      */
     public function inviteUser(User $user)
     {
-        return $this->client->apiCall('channels.invite', [
+        return $this->client->apiCall('conversations.invite', [
             'channel' => $this->getId(),
             'user' => $user->getId(),
         ])->then(function () use ($user) {
@@ -212,7 +212,7 @@ class Channel extends ClientObject implements ChannelInterface
      */
     public function kickUser(User $user)
     {
-        return $this->client->apiCall('channels.kick', [
+        return $this->client->apiCall('conversations.kick', [
             'channel' => $this->getId(),
             'user' => $user->getId(),
         ])->then(function () use ($user) {
@@ -225,7 +225,7 @@ class Channel extends ClientObject implements ChannelInterface
      */
     public function close()
     {
-        return $this->client->apiCall('channels.close', [
+        return $this->client->apiCall('conversations.close', [
             'channel' => $this->getId(),
         ])->then(function ($response) {
             return !isset($response['no_op']);
