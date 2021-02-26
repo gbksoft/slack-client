@@ -116,7 +116,9 @@ class ApiClient
      */
     public function getChannels()
     {
-        return $this->apiCall('conversations.list')->then(function ($response) {
+        return $this->apiCall('conversations.list', [
+            'limit'=> 1000
+        ])->then(function ($response) {
             $channels = [];
             foreach ($response['channels'] as $channel) {
                 $channels[] = new Channel($this, $channel);
@@ -168,7 +170,7 @@ class ApiClient
      */
     public function getGroups()
     {
-        return $this->apiCall('conversations.list', ['types'=>'private_channel'])->then(function ($response) {
+        return $this->apiCall('conversations.list', ['types'=>'private_channel', 'limit'=> 1000])->then(function ($response) {
             $groups = [];
             foreach ($response['channels'] as $group) {
                 $groups[] = new Group($this, $group);
