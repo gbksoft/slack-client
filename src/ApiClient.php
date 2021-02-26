@@ -221,6 +221,7 @@ class ApiClient
     public function getDMs()
     {
         return $this->apiCall('conversations.list', [
+            'limit'=> 1000,
             'types'=> 'im'
         ])->then(function ($response) {
             $dms = [];
